@@ -1,0 +1,19 @@
+.form-login {
+    background-color: var(surface-0);
+    height: 500px;
+    width:calc(100vw - 2rem);
+    display: flex;
+    justify-content: center;
+
+    & > div {
+        max-width: 300px;
+        width: 100%;
+        padding:1rem;
+    }
+
+    form {
+        & > div {
+            margin-bottom: 1rem;
+        }
+    }
+}
