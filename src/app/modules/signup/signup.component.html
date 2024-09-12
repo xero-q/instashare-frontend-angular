@@ -1,0 +1,37 @@
+<div class="p-d-flex p-jc-center p-ai-center p-mt-5 form-signup">
+    <div class="p-card p-shadow-4 p-p-4">
+      <h2 class="p-text-center">Sign Up</h2>
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <div class="p-field">
+          <label for="username">Username</label>
+          <input id="username" pInputText formControlName="username"/>
+          <div *ngIf="username && username.invalid && (username.dirty || username.touched)" class="p-error">
+            <div *ngIf="username.errors && username.errors['required']">Username is required</div>
+          </div>
+        </div>
+  
+        <div class="p-field">
+          <label for="password">Password</label>
+          <input id="password" pInputText type="password" formControlName="password" />
+          <div *ngIf="password && password.invalid && (password.dirty || password.touched)" class="p-error">
+            <div *ngIf="password.errors && password.errors['required']">Password is required</div>
+          </div>
+        </div>
+       
+
+        <div class="p-field">
+            <label for="email">Email</label>
+            <input id="email" pInputText formControlName="email" />
+            <div *ngIf="email && email.invalid && (email.dirty || email.touched)" class="p-error">
+              <div *ngIf="email.errors && email.errors['required']">Email is required</div>
+              <div *ngIf="email.errors && email.errors['email']">Invalid email</div>
+            </div>
+        </div>        
+        <div>
+          <button pButton type="submit" label="Sign Up" icon="pi pi-user-plus" class="p-button-rounded p-button-primary" [disabled]="signupForm.invalid"></button>
+        </div> 
+      </form>
+      <span class="p-error">{{errorMessage}}</span>
+    </div>
+  </div>
+  

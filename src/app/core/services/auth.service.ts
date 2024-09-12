@@ -8,17 +8,17 @@ import CONSTANTS from '../constants';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = `${CONSTANTS.API_URL}/auth/login`; 
-
   public loginRedirectUrl: string = '';
 
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<any> {
+    const URL = `${CONSTANTS.API_URL}/auth/login`;
+
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const body = { username, password };
 
-    return this.http.post<any>(this.apiUrl, body, { headers }).pipe(
+    return this.http.post<any>(URL, body, { headers }).pipe(
       map((response) => {
         if (response && response.access) {
           const loggedUser = {
@@ -35,6 +35,15 @@ export class AuthService {
         throw new Error(error.error.detail)
       })
     );
+  }
+
+  signup(username: string, password: string, email: string):Observable<any>{
+    const URL = `${CONSTANTS.API_URL}/auth/signup`;
+    
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const body = { username, password, email };
+
+    return this.http.post<any>(URL, body, { headers });
   }
 
   logout(): void {

@@ -5,16 +5,13 @@ import { PaginatorModule } from 'primeng/paginator';
 import { TagModule } from 'primeng/tag';
 import { ReadableFileSizeDirective } from '../../shared/directives/readable-file-size.directive';
 import { NgStyle } from '@angular/common';
-import {FileUploadModule} from 'primeng/fileupload';
-import CONSTANTS from '../../core/constants';
-import { HttpHeaders } from '@angular/common/http';
-import { AuthService } from '../../core/services/auth.service';
+
 
 @Component({
   selector: 'app-files',
   standalone: true,
   schemas:[NO_ERRORS_SCHEMA],
-  imports: [TableModule, PaginatorModule, TagModule, ReadableFileSizeDirective, NgStyle, FileUploadModule],
+  imports: [TableModule, PaginatorModule, TagModule, ReadableFileSizeDirective, NgStyle],
   templateUrl: './files.component.html',
   styleUrl: './files.component.scss'
 })
