@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, importProvidersFrom } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LoginComponent } from './modules/login/login.component';
 import { CardModule } from 'primeng/card';
@@ -8,6 +8,7 @@ import { PanelModule } from 'primeng/panel';
 import { MenubarModule } from 'primeng/menubar';
 import { NgStyle } from '@angular/common';
 import { PrimeNGConfig } from 'primeng/api';
+import { ToastrModule } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',

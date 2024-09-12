@@ -1,17 +1,15 @@
 <p-button 
 [ngStyle]="{'margin-bottom':'20px'}"
 (click)="uploadFileVisible = !uploadFileVisible"
- icon="pi pi-external-link" 
  [label]="uploadFileVisible ? 'Hide File Upload':'Show File Upload'">
 </p-button>
 <div *ngIf="uploadFileVisible">    
-    <app-file-upload></app-file-upload>
+    <app-file-upload (uploadComplete)="onUploadComplete()"></app-file-upload>
 </div>
 <p-table
   [value]="filesList" 
   (onPage)="onPageChange($event)"  
-  [resizableColumns]="true"
-  
+  [resizableColumns]="true"  
 >
   <ng-template pTemplate="caption">
     <div class="flex align-items-center justify-content-between">
@@ -34,7 +32,7 @@
       <td>
         <p-tag [value]="file.status" [severity]="getSeverity(file.status)" />
       </td>
-      <td><a [href]="getDownloadLink(file)">Download</a></td>
+      <td><a *ngIf="file.status === 'compressed'" [href]="getDownloadLink(file)">Download</a></td>
     </tr>
   </ng-template>
   

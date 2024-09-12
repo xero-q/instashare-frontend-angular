@@ -5,6 +5,7 @@ import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -21,10 +22,10 @@ export class SignupComponent {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private toastr: ToastrService
   ) {    
-  }
-  
+  } 
 
   ngOnInit() {
     this.signupForm = this.fb.group({
@@ -52,7 +53,8 @@ export class SignupComponent {
         .signup(this.username?.value, this.password?.value, this.email?.value)
         .subscribe({
           next: () => {            
-            this.router.navigateByUrl('/login');            
+            this.toastr.success('User registered successfully','Success');
+            // this.router.navigateByUrl('/login');            
           },
           error: (err) => {
             console.log(err);

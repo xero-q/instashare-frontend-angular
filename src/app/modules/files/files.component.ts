@@ -60,4 +60,8 @@ export class FilesComponent {
   getDownloadLink(file: UploadedFile): string {
     return `${CONSTANTS.API_URL}/api/download/${file.id}`
   }  
+
+  onUploadComplete() {
+    this.loadFiles();
+  }
 }
