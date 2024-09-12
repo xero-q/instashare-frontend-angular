@@ -1,3 +1,12 @@
+<p-button 
+[ngStyle]="{'margin-bottom':'20px'}"
+(click)="uploadFileVisible = !uploadFileVisible"
+ icon="pi pi-external-link" 
+ [label]="uploadFileVisible ? 'Hide File Upload':'Show File Upload'">
+</p-button>
+<div *ngIf="uploadFileVisible">    
+    <app-file-upload></app-file-upload>
+</div>
 <p-table
   [value]="filesList" 
   (onPage)="onPageChange($event)"  
@@ -15,6 +24,7 @@
       <th class="th-name" pResizableColumn>Name</th>
       <th class="th-size" pResizableColumn>Size</th>
       <th class="th-status" pResizableColumn>Status</th>
+      <th class="th-download" pResizableColumn>Download Link</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-file>
@@ -24,6 +34,7 @@
       <td>
         <p-tag [value]="file.status" [severity]="getSeverity(file.status)" />
       </td>
+      <td><a [href]="getDownloadLink(file)">Download</a></td>
     </tr>
   </ng-template>
   

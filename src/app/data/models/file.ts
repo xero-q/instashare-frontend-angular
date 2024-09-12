@@ -1,4 +1,4 @@
-export interface File {
+export interface UploadedFile {
     id: number;
     original_name: string;
     new_name?: string;
