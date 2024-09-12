@@ -10,16 +10,16 @@ import { NgStyle } from '@angular/common';
   selector: 'app-files',
   standalone: true,
   schemas:[NO_ERRORS_SCHEMA],
-  imports: [TableModule, PaginatorModule, TagModule, ReadableFileSizeDirective, NgStyle],  
+  imports: [TableModule, PaginatorModule, TagModule, ReadableFileSizeDirective, NgStyle],
   templateUrl: './files.component.html',
   styleUrl: './files.component.scss'
 })
 export class FilesComponent {
   filesList: File[]=[];
   page:number = 1;
-  perPage:number = 3;
+  perPage:number = 10;
   total:number = 0;
-  
+
   constructor (private filesService: FilesService){
   }
 
@@ -30,10 +30,10 @@ export class FilesComponent {
   private loadFiles(){
     this.filesList = [];
     this.filesService
-    .getFiles(this.page, this.perPage)      
+    .getFiles(this.page, this.perPage)
     .subscribe((response: any) => {
       this.total = response.count;
-      this.filesList = [...response.results as File[]];           
+      this.filesList = [...response.results as File[]];
     });
   }
 
@@ -49,5 +49,5 @@ export class FilesComponent {
   pageChange(event: any){
     this.page = event.page + 1;
     this.loadFiles();
-  } 
+  }
 }

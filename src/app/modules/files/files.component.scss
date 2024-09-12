@@ -20,11 +20,22 @@
 
 @media (width > 1024px){
     .th-name {
-        width:500px;     
+        width:700px;     
     }
  
     .th-size {
        width:150px;      
     }      
 }
+
+@media (width >= 1920px){
+    .th-name {
+        width:900px;     
+    }
+ 
+    .th-size {
+       width:250px;      
+    }      
+}
+
 
