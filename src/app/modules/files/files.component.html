@@ -1,0 +1,43 @@
+<p-table
+  [value]="filesList"
+  [tableStyle]="{ 'min-width': '60rem' }"
+  (onPage)="pageChange($event)"
+  
+>
+  <ng-template pTemplate="caption">
+    <div class="flex align-items-center justify-content-between">
+      Uploaded Files
+      <p-button icon="pi pi-refresh" />
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Name</th>
+      <th>Size</th>
+      <th>Status</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-file>
+    <tr>
+      <td>{{ file.new_name || file.original_name }}</td>
+      <td>{{ file.size }}</td>
+      <td>
+        <p-tag [value]="file.status" [severity]="getSeverity(file.status)" />
+      </td>
+    </tr>
+  </ng-template>
+  
+  <ng-template pTemplate="summary">
+    <div class="flex align-items-center justify-content-between">
+      In total there are {{ total }} files
+    </div>
+    <div class="card flex justify-content-center">
+        <p-paginator 
+            (onPageChange)="pageChange($event)" 
+            [first]="0" 
+            [rows]="perPage" 
+            [totalRecords]="total" 
+            />
+    </div>
+  </ng-template>  
+</p-table>

@@ -6,9 +6,9 @@ import { ButtonModule } from 'primeng/button';
 import { SidebarModule } from 'primeng/sidebar';
 import { PanelModule } from 'primeng/panel';
 import { MenubarModule } from 'primeng/menubar';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgStyle } from '@angular/common';
 import { PrimeNGConfig } from 'primeng/api';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +20,8 @@ import { PrimeNGConfig } from 'primeng/api';
     CardModule,
     SidebarModule,
     PanelModule,
-    MenubarModule
+    MenubarModule,
+    // BrowserAnimationsModule  
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

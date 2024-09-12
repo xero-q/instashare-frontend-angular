@@ -8,7 +8,9 @@ import CONSTANTS from '../constants';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = `${CONSTANTS.API_URL}/auth/login/`; 
+  private apiUrl = `${CONSTANTS.API_URL}/auth/login`; 
+
+  public loginRedirectUrl: string = '';
 
   constructor(private http: HttpClient) {}
 

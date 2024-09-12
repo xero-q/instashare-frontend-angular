@@ -17,7 +17,11 @@
             <div *ngIf="password.errors && password.errors['required']">Password is required</div>
           </div>
         </div>
+        <div>
+
+        
         <button pButton type="submit" label="Login" icon="pi pi-sign-in" class="p-button-rounded p-button-primary" [disabled]="loginForm.invalid"></button>
+      </div>
 
       </form>
       <span class="p-error">{{errorMessage}}</span>
