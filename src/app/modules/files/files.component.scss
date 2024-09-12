@@ -1,0 +1,30 @@
+@media (400px > width){
+   .th-name {
+       width:20px;     
+   }
+
+   .th-size {
+      width:20px;      
+   }      
+}
+
+@media (401px <= width <= 1024px){
+    .th-name {
+        width:400px;     
+    }
+ 
+    .th-size {
+       width:150px;      
+    }      
+}
+
+@media (width > 1024px){
+    .th-name {
+        width:500px;     
+    }
+ 
+    .th-size {
+       width:150px;      
+    }      
+}
+

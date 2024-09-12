@@ -1,6 +1,5 @@
 <p-table
-  [value]="filesList"
-  [tableStyle]="{ 'min-width': '60rem' }"
+  [value]="filesList" 
   (onPage)="pageChange($event)"  
 >
   <ng-template pTemplate="caption">
@@ -11,9 +10,9 @@
   </ng-template>
   <ng-template pTemplate="header">
     <tr>
-      <th [ngStyle]="{width:'400px'}">Name</th>
-      <th [ngStyle]="{width:'150px'}">Size</th>
-      <th>Status</th>
+      <th class="th-name">Name</th>
+      <th class="th-size">Size</th>
+      <th class="th-status">Status</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-file>
