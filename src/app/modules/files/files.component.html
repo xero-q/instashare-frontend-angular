@@ -1,8 +1,7 @@
 <p-table
   [value]="filesList"
   [tableStyle]="{ 'min-width': '60rem' }"
-  (onPage)="pageChange($event)"
-  
+  (onPage)="pageChange($event)"  
 >
   <ng-template pTemplate="caption">
     <div class="flex align-items-center justify-content-between">
@@ -12,15 +11,15 @@
   </ng-template>
   <ng-template pTemplate="header">
     <tr>
-      <th>Name</th>
-      <th>Size</th>
+      <th [ngStyle]="{width:'400px'}">Name</th>
+      <th [ngStyle]="{width:'150px'}">Size</th>
       <th>Status</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-file>
     <tr>
       <td>{{ file.new_name || file.original_name }}</td>
-      <td>{{ file.size }}</td>
+      <td><span [readableFileSize]="file.size"></span></td>
       <td>
         <p-tag [value]="file.status" [severity]="getSeverity(file.status)" />
       </td>

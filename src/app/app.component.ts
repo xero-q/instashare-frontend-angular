@@ -8,7 +8,6 @@ import { PanelModule } from 'primeng/panel';
 import { MenubarModule } from 'primeng/menubar';
 import { NgStyle } from '@angular/common';
 import { PrimeNGConfig } from 'primeng/api';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-root',
@@ -20,9 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CardModule,
     SidebarModule,
     PanelModule,
-    MenubarModule,
-    // BrowserAnimationsModule  
-  ],
+    MenubarModule   
+  ], 
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

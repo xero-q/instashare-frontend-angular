@@ -32,7 +32,7 @@ export class AuthService {
       }),
       catchError((error) => {
         console.log(error);
-        return throwError(error.error.detail)
+        throw new Error(error.error.detail)
       })
     );
   }
@@ -51,9 +51,7 @@ export class AuthService {
       return JSON.parse(loggedUserItem);
     } 
     else {
-      return {
-
-      }
+      return null;     
     }    
-  }
+  } 
 }

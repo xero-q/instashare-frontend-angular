@@ -22,12 +22,16 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginForm!: FormGroup;
   errorMessage: string = '';
-
+  
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private authService: AuthService
-  ) {}
+  ) {
+    if (authService.isLoggedIn){
+      router.navigateByUrl('files');
+    }
+  }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
