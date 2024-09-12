@@ -1,5 +1,5 @@
-import { NgIf, NgStyle } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgClass, NgIf, NgStyle } from '@angular/common';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
   selector: 'app-login',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   standalone: true,
-  imports: [NgIf, NgStyle, ReactiveFormsModule, ButtonModule, InputTextModule],
+  imports: [NgIf, NgStyle, NgClass, ReactiveFormsModule, ButtonModule, InputTextModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

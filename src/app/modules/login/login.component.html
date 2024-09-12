@@ -4,7 +4,7 @@
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="p-field">
           <label for="username">Username</label>
-          <input id="username" pInputText formControlName="username" />
+          <input id="username" pInputText formControlName="username"/>
           <div *ngIf="username && username.invalid && (username.dirty || username.touched)" class="p-error">
             <div *ngIf="username.errors && username.errors['required']">Username is required</div>
           </div>

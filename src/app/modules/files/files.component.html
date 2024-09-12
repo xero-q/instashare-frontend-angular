@@ -1,6 +1,8 @@
 <p-table
   [value]="filesList" 
-  (onPage)="pageChange($event)"  
+  (onPage)="onPageChange($event)"  
+  [resizableColumns]="true"
+  
 >
   <ng-template pTemplate="caption">
     <div class="flex align-items-center justify-content-between">
@@ -9,14 +11,14 @@
     </div>
   </ng-template>
   <ng-template pTemplate="header">
-    <tr>
-      <th class="th-name">Name</th>
-      <th class="th-size">Size</th>
-      <th class="th-status">Status</th>
+    <tr >
+      <th class="th-name" pResizableColumn>Name</th>
+      <th class="th-size" pResizableColumn>Size</th>
+      <th class="th-status" pResizableColumn>Status</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-file>
-    <tr>
+    <tr [ngStyle]="{'height':'80px'}">
       <td>{{ file.new_name || file.original_name }}</td>
       <td><span [readableFileSize]="file.size"></span></td>
       <td>
@@ -31,7 +33,7 @@
     </div>
     <div class="card flex justify-content-center">
         <p-paginator 
-            (onPageChange)="pageChange($event)" 
+            (onPageChange)="onPageChange($event)" 
             [first]="0" 
             [rows]="perPage" 
             [totalRecords]="total" 
