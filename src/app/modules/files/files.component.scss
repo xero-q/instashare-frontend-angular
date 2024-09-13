@@ -38,12 +38,12 @@
     }      
 }
 
-
-p-datatable-tbody > tr {
-    height: auto;
-    min-height: 50px;
-}
-
 ::ng-deep .button-show button {
     margin-bottom: 20px;
+}
+
+.header-table {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

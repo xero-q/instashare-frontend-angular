@@ -26,8 +26,7 @@ import { ToastrModule } from 'ngx-toastr';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'frontend-angular';
-  sidebarVisible: boolean = true;
+  title = 'InstaShare';
   email = 'anibalnuma@gmail.com'
   year = new Date().getFullYear();
 

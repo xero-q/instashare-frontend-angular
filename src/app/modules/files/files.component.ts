@@ -33,7 +33,7 @@ export class FilesComponent {
     this.loadFiles();
   }
 
-  private loadFiles(){
+  public loadFiles(){
     this.filesList = [];
     this.filesService
     .getFiles(this.page, this.perPage)

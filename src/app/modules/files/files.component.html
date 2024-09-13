@@ -9,12 +9,13 @@ class="button-show"
 <p-table
   [value]="filesList" 
   (onPage)="onPageChange($event)"  
-  [resizableColumns]="true"  
+  [resizableColumns]="true" 
+  [ngStyle]="{'min-width':'350px'}" 
 >
   <ng-template pTemplate="caption">
-    <div class="flex align-items-center justify-content-between">
-      Uploaded Files
-      <p-button icon="pi pi-refresh" />
+    <div class="header-table">
+      <div>Uploaded Files</div>
+      <p-button icon="pi pi-refresh" (click)="loadFiles()"/>
     </div>
   </ng-template>
   <ng-template pTemplate="header">
