@@ -16,11 +16,10 @@ export class FileUploadComponent {
   message: string = '';
 
   fileUploadUrl = `${CONSTANTS.API_URL}/api/upload`;
-  authHeaders: HttpHeaders;
 
   constructor (private authService: AuthService){
-    const token = this.authService.loggedUser().token;
-    this.authHeaders =  new HttpHeaders({ 'Authorization': `Bearer ${token}` });
+    // const token = this.authService.getAccessToken();
+    // this.authHeaders =  new HttpHeaders({ 'Authorization': `Bearer ${token}` });
   }
  
   onFileUpload(event: any){    

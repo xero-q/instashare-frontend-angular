@@ -3,8 +3,9 @@ import { provideRouter } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { routes } from './app.routes';
-import { provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AuthGuard } from './core/guards/auth-guard.service';
+import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideHttpClient(), AuthGuard,
@@ -15,5 +16,11 @@ export const appConfig: ApplicationConfig = {
       positionClass: 'toast-top-right', // Toast position
       preventDuplicates: true, // Prevent duplicate toasts
     }),
+    provideHttpClient(withInterceptorsFromDi()),  
+        {
+            provide:HTTP_INTERCEPTORS,
+            useClass:TokenInterceptor,
+            multi:true
+        }
   ],
 };
