@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import CONSTANTS from '../constants';
 import { Observable } from 'rxjs/internal/Observable';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilesService {
-  private apiUrl = `${CONSTANTS.API_URL}/api/files`; 
+  private apiUrl = `${environment.API_URL}/api/files`; 
 
   constructor(private http: HttpClient) {}
 

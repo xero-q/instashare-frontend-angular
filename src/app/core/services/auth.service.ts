@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import CONSTANTS from '../constants';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<any> {
-    const URL = `${CONSTANTS.API_URL}/auth/login`;
+    const URL = `${environment.API_URL}/auth/login`;
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const body = { username, password };
@@ -38,7 +38,7 @@ export class AuthService {
   }
 
   signup(username: string, password: string, email: string):Observable<any>{
-    const URL = `${CONSTANTS.API_URL}/auth/signup`;
+    const URL = `${environment.API_URL}/auth/signup`;
     
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const body = { username, password, email };
@@ -99,7 +99,7 @@ export class AuthService {
   }
 
   refreshToken() {
-    const URL = `${CONSTANTS.API_URL}/auth/refresh-token`;
+    const URL = `${environment.API_URL}/auth/refresh-token`;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     const body = { refresh:this.getRefreshToken() };

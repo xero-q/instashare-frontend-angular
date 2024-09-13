@@ -31,7 +31,7 @@ export class AppComponent {
   year = new Date().getFullYear();
 
   constructor(private primengConfig: PrimeNGConfig) {
-    this.primengConfig.csp.set({nonce: '...'});
+    this.primengConfig.csp.set({nonce: '...'});  
   }
 
     ngOnInit() {

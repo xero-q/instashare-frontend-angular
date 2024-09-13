@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
 import { HttpHeaders } from '@angular/common/http';
-import CONSTANTS from '../../core/constants';
 import { FileUploadModule } from 'primeng/fileupload';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-file-upload',
@@ -15,13 +15,8 @@ export class FileUploadComponent {
   @Output() uploadComplete = new EventEmitter<void>();
   message: string = '';
 
-  fileUploadUrl = `${CONSTANTS.API_URL}/api/upload`;
-
-  constructor (private authService: AuthService){
-    // const token = this.authService.getAccessToken();
-    // this.authHeaders =  new HttpHeaders({ 'Authorization': `Bearer ${token}` });
-  }
- 
+  fileUploadUrl = `${environment.API_URL}/api/upload`;
+     
   onFileUpload(event: any){    
     this.message = 'Upload complete';  
     this.uploadComplete.emit();    
