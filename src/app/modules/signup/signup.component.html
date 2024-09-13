@@ -7,15 +7,29 @@
           <input id="username" pInputText formControlName="username"/>
           <div *ngIf="username && username.invalid && (username.dirty || username.touched)" class="p-error">
             <div *ngIf="username.errors && username.errors['required']">Username is required</div>
+            <div *ngIf="username.errors && username.errors['pattern']">Username can contain only letters, digits, _, - and a maximum of 50 characters.</div>
           </div>
         </div>
   
         <div class="p-field">
           <label for="password">Password</label>
-          <input id="password" pInputText type="password" formControlName="password" />
+          <p-password id="password" [toggleMask]="true" formControlName="password" [feedback]="false"/>
           <div *ngIf="password && password.invalid && (password.dirty || password.touched)" class="p-error">
             <div *ngIf="password.errors && password.errors['required']">Password is required</div>
+            <div *ngIf="password.errors && password.errors['pattern']">Password can contain a maximum of 50 characters, any but spaces.</div>
+            <div *ngIf="password.errors && password.errors['minlength']">Password must contain at least 6 characters.</div>
           </div>
+        </div>
+
+        <div class="p-field">
+          <label for="passwordConfirm">Confirm password</label>
+          <p-password id="passwordConfirm" [toggleMask]="true" formControlName="passwordConfirm" [feedback]="false"/>
+          <div *ngIf="passwordConfirm && passwordConfirm.invalid && (passwordConfirm.dirty || passwordConfirm.touched)" class="p-error">
+            <div *ngIf="passwordConfirm.errors && passwordConfirm.errors['required']">Password is required</div>
+            <div *ngIf="passwordConfirm.errors && passwordConfirm.errors['pattern']">Password can contain a maximum of 50 characters, any but spaces.</div>
+            <div *ngIf="passwordConfirm.errors && passwordConfirm.errors['minlength']">Password must contain at least 6 characters.</div>                    
+          </div>
+          <div *ngIf="passwordConfirm && !passwordConfirm.invalid && signupForm.errors && signupForm.errors['passwordMismatch']" class="p-error">Passwords do not match</div>  
         </div>
        
 

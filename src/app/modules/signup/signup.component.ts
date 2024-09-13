@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators,ReactiveFormsModule } from '@angular
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
+import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastrService } from 'ngx-toastr';
 
@@ -11,13 +12,15 @@ import { ToastrService } from 'ngx-toastr';
   selector: 'app-signup',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [NgIf, NgStyle, NgClass, ReactiveFormsModule, ButtonModule, InputTextModule],
+  imports: [NgIf, NgStyle, NgClass, ReactiveFormsModule, ButtonModule, InputTextModule, PasswordModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
   signupForm!: FormGroup;
   errorMessage: string = '';
+  REGULAR_EXPRESSION_USERNAME= '^[a-zA-Z0-9_-]{1,50}$';
+  REGULAR_EXPRESSION_PASSWORD = '^[\\S]{1,50}$';
   
   constructor(
     private router: Router,
@@ -29,10 +32,11 @@ export class SignupComponent {
 
   ngOnInit() {
     this.signupForm = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      username: ['', [Validators.required, Validators.pattern(this.REGULAR_EXPRESSION_USERNAME)]],
+      password: ['', [Validators.required, Validators.pattern(this.REGULAR_EXPRESSION_PASSWORD), Validators.minLength(6)]],
+      passwordConfirm: ['', [Validators.required, Validators.pattern(this.REGULAR_EXPRESSION_PASSWORD), Validators.minLength(6)]],
       email: ['',[Validators.required, Validators.email]]
-    });
+    },{ validators: this.passwordsMatchValidator });
   }
 
   get username() {
@@ -41,6 +45,10 @@ export class SignupComponent {
 
   get password() {
     return this.signupForm.get('password');
+  }
+
+  get passwordConfirm() {
+    return this.signupForm.get('passwordConfirm');
   }
 
   get email() {
@@ -54,7 +62,7 @@ export class SignupComponent {
         .subscribe({
           next: () => {            
             this.toastr.success('User registered successfully','Success');
-            // this.router.navigateByUrl('/login');            
+            this.router.navigateByUrl('/login');            
           },
           error: (err) => {
             console.log(err);
@@ -64,6 +72,18 @@ export class SignupComponent {
         });
       
     }
+  }
+
+  passwordsMatchValidator(form: FormGroup) {
+    const password = form.get('password')?.value;
+    const confirmPassword = form.get('passwordConfirm')?.value;
+
+    console.log('Entre aqui');
+    console.log(password, confirmPassword);
+
+    console.log(form.errors && form.errors['passwordMismatch']);
+
+    return password === confirmPassword ? null : { passwordMismatch: true };
   }
 
 }
