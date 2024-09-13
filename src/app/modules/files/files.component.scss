@@ -44,3 +44,6 @@ p-datatable-tbody > tr {
     min-height: 50px;
 }
 
+::ng-deep .button-show button {
+    margin-bottom: 20px;
+}
