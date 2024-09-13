@@ -2,7 +2,7 @@ import { NgIf, NgStyle, NgClass } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
   selector: 'app-signup',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [NgIf, NgStyle, NgClass, ReactiveFormsModule, ButtonModule, InputTextModule, PasswordModule],
+  imports: [NgIf, NgStyle, NgClass, ReactiveFormsModule, ButtonModule, InputTextModule, PasswordModule, RouterModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
@@ -77,11 +77,6 @@ export class SignupComponent {
   passwordsMatchValidator(form: FormGroup) {
     const password = form.get('password')?.value;
     const confirmPassword = form.get('passwordConfirm')?.value;
-
-    console.log('Entre aqui');
-    console.log(password, confirmPassword);
-
-    console.log(form.errors && form.errors['passwordMismatch']);
 
     return password === confirmPassword ? null : { passwordMismatch: true };
   }
