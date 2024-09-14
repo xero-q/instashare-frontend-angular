@@ -1,49 +1,66 @@
-@media (400px > width){
-   .th-name {
-       width:20px;     
-   }
+@media (400px > width) {
+  .th-name {
+    width: 20px;
+  }
 
-   .th-size {
-      width:20px;      
-   }      
+  .th-size {
+    width: 20px;
+  }
 }
 
-@media (401px <= width <= 1024px){
-    .th-name {
-        width:400px;     
-    }
- 
-    .th-size {
-       width:150px;      
-    }      
+@media (401px <= width <= 1024px) {
+  .th-name {
+    width: 400px;
+  }
+
+  .th-size {
+    width: 150px;
+  }
 }
 
-@media (width > 1024px){
-    .th-name {
-        width:700px;     
-    }
- 
-    .th-size {
-       width:150px;      
-    }      
+@media (width > 1024px) {
+  .th-name {
+    width: 700px;
+  }
+
+  .th-size {
+    width: 150px;
+  }
 }
 
-@media (width >= 1920px){
-    .th-name {
-        width:900px;     
-    }
- 
-    .th-size {
-       width:250px;      
-    }      
+@media (width >= 1920px) {
+  .th-name {
+    width: 900px;
+  }
+
+  .th-size {
+    width: 250px;
+  }
+}
+
+:host {
+  max-width: 95%;
 }
 
 ::ng-deep .button-show button {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+::ng-deep .p-datatable {
+  td:first-child {
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+
+  td:last-child {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .header-table {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
