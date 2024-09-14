@@ -1,5 +1,5 @@
 export const environment = {
     production:true,
-    API_URL:'http://fb.com'
+    API_URL:'https://anibal-backend-ce.onrender.com/'
 };
 
