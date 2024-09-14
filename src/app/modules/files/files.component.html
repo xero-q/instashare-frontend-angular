@@ -31,13 +31,13 @@
   </ng-template>
   <ng-template pTemplate="body" let-file let-rowIndex="rowIndex">
     <tr [ngStyle]="{ height: '80px'}">
-      <td [pEditableColumn]="file" [pEditableColumnField]="'new_name'">
+      <td [pEditableColumn]="file" [pEditableColumnField]="'name'">
         <p-cellEditor>
           <ng-template pTemplate="input">
-            <input pInputText type="text" [(ngModel)]="file.new_name"/>
+            <input pInputText type="text" [(ngModel)]="file.name"/>
           </ng-template>
           <ng-template pTemplate="output">
-            {{ file.new_name || file.original_name }}
+            {{ file.name }}
           </ng-template>
         </p-cellEditor>
       </td>

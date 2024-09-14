@@ -73,9 +73,9 @@ export class FilesComponent {
   }
 
   onEditComplete(event: any) {
-    const {id, new_name} = event.data;
+    const {id, name} = event.data;
 
-    this.filesService.updateFile(id, new_name).subscribe({
+    this.filesService.updateFile(id, name).subscribe({
       next:(response: any)=>{
         this.loadFiles();
       },
