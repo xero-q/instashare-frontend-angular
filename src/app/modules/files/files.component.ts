@@ -9,6 +9,7 @@ import { UploadedFile } from '../../data/models/file';
 import { FileUploadComponent } from "../file-upload/file-upload.component";
 import { ButtonModule } from 'primeng/button';
 import { environment } from '../../../environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class FilesComponent {
   total:number = 0; 
   uploadFileVisible:boolean = false;
 
-  constructor (private filesService: FilesService){    
+  constructor (private filesService: FilesService,private toastr: ToastrService){    
   }
 
   ngOnInit(){
@@ -63,5 +64,18 @@ export class FilesComponent {
 
   onUploadComplete() {
     this.loadFiles();
+  }
+
+  onEditComplete(event: any) {
+    const {id, new_name} = event.data;
+
+    this.filesService.updateFile(id, new_name).subscribe({
+      next:(response: any)=>{
+        this.loadFiles();
+      },
+      error:(err: any)=>{
+        const {detail} = err.error;
+        this.toastr.error(detail,'Error');
+    }})    
   }
 }

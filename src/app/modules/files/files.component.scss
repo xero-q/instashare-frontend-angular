@@ -47,6 +47,11 @@
 }
 
 ::ng-deep .p-datatable {
+  tr > td {
+    height: 80px;
+    vertical-align: center;
+  }
+
   td:first-child {
     white-space: normal;
     word-wrap: break-word;
@@ -56,6 +61,7 @@
   td:last-child {
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 }
 

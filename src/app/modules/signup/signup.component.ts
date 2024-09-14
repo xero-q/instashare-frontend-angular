@@ -65,7 +65,6 @@ export class SignupComponent {
             this.router.navigateByUrl('/login');            
           },
           error: (err) => {
-            console.log(err);
             const firstError = Object.keys(err.error)[0];
             this.errorMessage = 'Error: ' + err.error[firstError][0];
           }
