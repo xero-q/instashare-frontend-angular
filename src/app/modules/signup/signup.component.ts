@@ -21,6 +21,7 @@ export class SignupComponent {
   errorMessage: string = '';
   REGULAR_EXPRESSION_USERNAME= '^[a-zA-Z0-9_-]{1,50}$';
   REGULAR_EXPRESSION_PASSWORD = '^[\\S]{1,50}$';
+  isLoading:boolean = false;
   
   constructor(
     private router: Router,
@@ -57,14 +58,17 @@ export class SignupComponent {
 
   onSubmit() {
     if (this.signupForm.valid) {
+      this.isLoading = true;
       this.authService
         .signup(this.username?.value, this.password?.value, this.email?.value)
         .subscribe({
           next: () => {            
+            this.isLoading = false;
             this.toastr.success('User registered successfully','Success');
             this.router.navigateByUrl('/login');            
           },
           error: (err) => {
+            this.isLoading = false;
             const firstError = Object.keys(err.error)[0];
             this.errorMessage = 'Error: ' + err.error[firstError][0];
           }

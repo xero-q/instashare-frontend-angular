@@ -84,4 +84,9 @@ export class FilesComponent {
         this.toastr.error(detail,'Error');
     }})    
   }
+
+  doNothing(event: any){
+    event.stopPropagation(); 
+    return; 
+  }
 }

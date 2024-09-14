@@ -34,7 +34,7 @@
       <td [pEditableColumn]="file" [pEditableColumnField]="'name'">
         <p-cellEditor>
           <ng-template pTemplate="input">
-            <input pInputText type="text" [(ngModel)]="file.name"/>
+            <input pInputText type="text" [(ngModel)]="file.name" (keydown.ArrowRight)="doNothing($event)" (keydown.ArrowLeft)="doNothing($event)" (keydown.ArrowUp)="doNothing($event)" (keydown.ArrowDown)="doNothing($event)"/>
           </ng-template>
           <ng-template pTemplate="output">
             {{ file.name }}

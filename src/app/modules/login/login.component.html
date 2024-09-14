@@ -20,11 +20,11 @@
         
         
         <div>        
-        <button pButton type="submit" label="Login" icon="pi pi-sign-in" class="p-button-rounded p-button-primary" [disabled]="loginForm.invalid"></button>
+        <button pButton type="submit" label="Login" [icon]="isLoading ? 'pi pi-spinner':'pi pi-sign-in'" class="p-button-rounded p-button-primary" [disabled]="loginForm.invalid"></button>
       </div>
 
       </form>
-      <span class="p-error">{{errorMessage}}</span>
+      <div class="p-error error-message">{{errorMessage}}</div>
       <div class="signup-link">You don't have a user? <span [routerLink]="'/signup'">Signup</span></div>
     </div>
   </div>

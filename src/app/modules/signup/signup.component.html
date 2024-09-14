@@ -42,7 +42,7 @@
             </div>
         </div>        
         <div>
-          <button pButton type="submit" label="Sign Up" icon="pi pi-user-plus" class="p-button-rounded p-button-primary" [disabled]="signupForm.invalid"></button>
+          <button pButton type="submit" label="Sign Up" [icon]="isLoading ? 'pi pi-spinner' : 'pi pi-user-plus'" class="p-button-rounded p-button-primary" [disabled]="signupForm.invalid"></button>
         </div> 
       </form>
       <span class="p-error">{{errorMessage}}</span>

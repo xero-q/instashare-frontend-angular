@@ -22,6 +22,7 @@ import { Router, RouterModule } from '@angular/router';
 export class LoginComponent {
   loginForm!: FormGroup;
   errorMessage: string = '';
+  isLoading: boolean = false;
   
   constructor(
     private router: Router,
@@ -50,10 +51,12 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
+      this.isLoading = true;
       this.authService
         .login(this.username?.value, this.password?.value)
         .subscribe({
           next: (response) => {
+            this.isLoading = false;
             this.errorMessage = '';
             const redirectUrl = this.authService.loginRedirectUrl;
             if (redirectUrl) {
@@ -64,10 +67,10 @@ export class LoginComponent {
             }
           },
           error: (err) => {
+            this.isLoading = false;
             this.errorMessage = err;
           }
-        });
-      // Add your login logic here
+        });     
     }
   }
 }
