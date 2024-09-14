@@ -38,10 +38,16 @@ export class FilesComponent {
     this.filesList = [];
     this.filesService
     .getFiles(this.page, this.perPage)
-    .subscribe((response: any) => {
-      this.total = response.count;
-      this.filesList = [...response.results as UploadedFile[]];
-    });
+    .subscribe({
+      next:(response: any)=>{
+        this.total = response.count;
+        this.filesList = [...response.results as UploadedFile[]];
+      },
+      error:(err: any)=>{
+        console.log(err);
+        this.toastr.error('Error while fetching the files','Error');
+      }
+    })       
   }
 
   getSeverity(status: string): 'warning' | 'success' | 'info' {
