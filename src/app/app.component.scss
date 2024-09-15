@@ -3,11 +3,12 @@
   display: flex;
   flex-direction: column;
 
-  .p-menubar {
-    margin-bottom: 1rem;
-    padding:1rem;
-    border:none;
+  ::ng-deep .p-card-content > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   } 
+  
  
   .p-card {
     border-radius: 8px;

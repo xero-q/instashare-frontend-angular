@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, Route } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import ROUTES from '../../shared/routes';
 
 @Injectable()
 export class AuthGuard {
@@ -27,7 +28,7 @@ export class AuthGuard {
     }
 
     this.authService.loginRedirectUrl = url;
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl(ROUTES.LOGIN);
 
     return false;
 

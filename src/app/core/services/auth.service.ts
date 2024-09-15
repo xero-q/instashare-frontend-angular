@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
+import { Router } from '@angular/router';
+import ROUTES from '../../shared/routes';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ import { environment } from '../../../environments/environment';
 export class AuthService {
   public loginRedirectUrl: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router:Router) {}
 
   login(username: string, password: string): Observable<any> {
     const URL = `${environment.API_URL}/auth/login`;
@@ -47,6 +49,7 @@ export class AuthService {
 
   logout(): void {
     window.localStorage.removeItem('loggedUser');
+    this.router.navigateByUrl(ROUTES.LOGIN);
   }
 
   get isLoggedIn(): boolean {

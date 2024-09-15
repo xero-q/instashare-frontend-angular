@@ -7,6 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastrService } from 'ngx-toastr';
+import ROUTES from '../../shared/routes';
 
 @Component({
   selector: 'app-signup',
@@ -22,6 +23,7 @@ export class SignupComponent {
   REGULAR_EXPRESSION_USERNAME= '^[a-zA-Z0-9_-]{1,50}$';
   REGULAR_EXPRESSION_PASSWORD = '^[\\S]{1,50}$';
   isLoading:boolean = false;
+  LOGIN_ROUTE = ROUTES.LOGIN;
   
   constructor(
     private router: Router,
@@ -65,7 +67,7 @@ export class SignupComponent {
           next: () => {            
             this.isLoading = false;
             this.toastr.success('User registered successfully','Success');
-            this.router.navigateByUrl('/login');            
+            this.router.navigateByUrl(ROUTES.LOGIN);            
           },
           error: (err) => {
             this.isLoading = false;

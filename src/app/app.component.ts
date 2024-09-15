@@ -6,22 +6,26 @@ import { ButtonModule } from 'primeng/button';
 import { SidebarModule } from 'primeng/sidebar';
 import { PanelModule } from 'primeng/panel';
 import { MenubarModule } from 'primeng/menubar';
-import { NgStyle } from '@angular/common';
+import { NgStyle, NgIf } from '@angular/common';
 import { PrimeNGConfig } from 'primeng/api';
 import { ToastrModule } from 'ngx-toastr';
+import { UserMenuComponent } from "./modules/user-menu/user-menu.component";
+import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     NgStyle,
+    NgIf,
     RouterOutlet,
     LoginComponent,
     CardModule,
     SidebarModule,
     PanelModule,
-    MenubarModule   
-  ], 
+    MenubarModule,
+    UserMenuComponent
+], 
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -30,7 +34,7 @@ export class AppComponent {
   email = 'anibalnuma@gmail.com'
   year = new Date().getFullYear();
 
-  constructor(private primengConfig: PrimeNGConfig) {
+  constructor(private primengConfig: PrimeNGConfig, public authService: AuthService) {
     this.primengConfig.csp.set({nonce: '...'});  
   }
 

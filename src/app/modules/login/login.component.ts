@@ -10,6 +10,7 @@ import { AuthService } from '../../core/services/auth.service';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { Router, RouterModule } from '@angular/router';
+import ROUTES from '../../shared/routes';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ import { Router, RouterModule } from '@angular/router';
 export class LoginComponent {
   loginForm!: FormGroup;
   errorMessage: string = '';
-  isLoading: boolean = false;
+  isLoading: boolean = false; 
+  SIGNUP_ROUTE = '/' + ROUTES.SIGNUP;
   
   constructor(
     private router: Router,
@@ -30,7 +32,7 @@ export class LoginComponent {
     private authService: AuthService
   ) {
     if (authService.isLoggedIn){
-      router.navigateByUrl('files');
+      router.navigateByUrl(ROUTES.FILES);
     }
   }
 
@@ -63,7 +65,7 @@ export class LoginComponent {
               this.authService.loginRedirectUrl = '';
               this.router.navigateByUrl(redirectUrl);
             } else {
-              this.router.navigateByUrl('/files');
+              this.router.navigateByUrl(ROUTES.FILES);
             }
           },
           error: (err) => {

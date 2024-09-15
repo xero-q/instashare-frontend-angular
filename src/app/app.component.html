@@ -1,11 +1,10 @@
 <div class="container">
-  <p-menubar>
-    <div class="p-menubar">
-      <div class="p-menubar-start">
-        <span class="p-menubar-brand"><h1>InstaShare</h1></span>
-      </div>
+  <p-card class="header">
+    <div>      
+        <div><h1>InstaShare</h1></div>
+        <app-user-menu *ngIf="authService.isLoggedIn"></app-user-menu>   
     </div>
-  </p-menubar>
+  </p-card>
 
   <div class="p-d-flex flex-grow main-content p-card">
     <router-outlet></router-outlet>
