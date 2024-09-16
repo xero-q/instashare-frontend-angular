@@ -26,6 +26,7 @@ export class FilesComponent {
   perPage:number = 10;
   total:number = 0; 
   uploadFileVisible:boolean = false;
+  isLoading: boolean = false;
 
   constructor (private filesService: FilesService,private toastr: ToastrService){    
   }
@@ -36,15 +37,17 @@ export class FilesComponent {
 
   public loadFiles(){
     this.filesList = [];
+    this.isLoading = true;
     this.filesService
     .getFiles(this.page, this.perPage)
     .subscribe({
       next:(response: any)=>{
+        this.isLoading = false;
         this.total = response.count;
         this.filesList = [...response.results as UploadedFile[]];
       },
       error:(err: any)=>{
-        console.log(err);
+        this.isLoading = false;  
         this.toastr.error('Error while fetching the files','Error');
       }
     })       

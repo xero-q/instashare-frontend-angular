@@ -14,6 +14,8 @@
   [resizableColumns]="true"
   (onEditComplete)="onEditComplete($event)"
   editable="true"
+  [loading]="isLoading"
+  [loadingIcon]="'pi pi-spinner'"  
 >
   <ng-template pTemplate="caption">
     <div class="header-table">
