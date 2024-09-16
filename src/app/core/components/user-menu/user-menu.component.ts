@@ -2,8 +2,8 @@ import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { MenuModule } from 'primeng/menu';
-import { AuthService } from '../../core/services/auth.service';
-import ROUTES from '../../shared/routes';
+import { AuthService } from '../../services/auth.service';
+import ROUTES from '../../../shared/routes';
 
 @Component({
   selector: 'app-user-menu',

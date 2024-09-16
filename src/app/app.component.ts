@@ -9,7 +9,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { NgStyle, NgIf } from '@angular/common';
 import { PrimeNGConfig } from 'primeng/api';
 import { ToastrModule } from 'ngx-toastr';
-import { UserMenuComponent } from "./modules/user-menu/user-menu.component";
+import { UserMenuComponent } from "./core/components/user-menu/user-menu.component";
 import { AuthService } from './core/services/auth.service';
 
 @Component({

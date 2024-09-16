@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FilesComponent } from './files.component';
+import { provideToastr } from 'ngx-toastr';
 
 describe('FilesComponent', () => {
   let component: FilesComponent;
@@ -8,7 +9,8 @@ describe('FilesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FilesComponent]
+      imports: [FilesComponent,HttpClientTestingModule],
+      providers:[ provideToastr()]
     })
     .compileComponents();
     
