@@ -5,12 +5,11 @@ import { PaginatorModule } from 'primeng/paginator';
 import { TagModule } from 'primeng/tag';
 import { ReadableFileSizeDirective } from '../../shared/directives/readable-file-size.directive';
 import { NgStyle, NgIf } from '@angular/common';
-import { UploadedFile } from '../../data/models/file';
+import { UploadedFile } from '../../data/models/uploaded-file';
 import { FileUploadComponent } from "../../core/components/file-upload/file-upload.component";
 import { ButtonModule } from 'primeng/button';
 import { environment } from '../../../environments/environment';
 import { ToastrService } from 'ngx-toastr';
-
 
 @Component({
   selector: 'app-files',
