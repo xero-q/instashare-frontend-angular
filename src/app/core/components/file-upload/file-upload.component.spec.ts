@@ -20,4 +20,8 @@ describe('FileUploadComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have url for upload', () => {
+    expect(component.fileUploadUrl).toBeTruthy();
+  });
 });

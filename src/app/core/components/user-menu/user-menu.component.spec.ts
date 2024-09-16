@@ -20,4 +20,12 @@ describe('UserMenuComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should not have visible menu', () => {
+    expect(component.menuVisible).toBeFalse();
+  });
+
+  it('should have items', () => {
+    expect(component.items).toBeTruthy();
+  });
 });

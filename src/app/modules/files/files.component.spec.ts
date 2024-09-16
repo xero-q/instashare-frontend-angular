@@ -22,4 +22,20 @@ describe('FilesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have number of page', () => {
+    expect(component.page).toBeTruthy();
+  });
+
+  it('should have number of items per page', () => {
+    expect(component.perPage).toBeTruthy();
+  }); 
+
+  it('should contain fieUpload component when setting uploadFileVisible to true', ()=>{
+    component.uploadFileVisible = true;
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('app-file-upload')).toBeTruthy();
+  })
+
 });
