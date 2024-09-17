@@ -54,7 +54,7 @@ describe('FilesService', () => {
       expect(response.success).toBe(true);
     });
 
-    const req = httpTestingController.expectOne(`${environment.API_URL}/api/upload/${fileId}`);
+    const req = httpTestingController.expectOne(`${environment.API_URL}/api/update/${fileId}`);
     expect(req.request.method).toBe('PUT');
     expect(req.request.body).toEqual({ name: updatedFileName });   
     req.flush(mockResponse);

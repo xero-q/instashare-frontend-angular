@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment';
 })
 export class FilesService {
   private filesUrl = `${environment.API_URL}/api/files`; 
-  private uploadUrl = `${environment.API_URL}/api/upload`
+  private uploadUrl = `${environment.API_URL}/api/update`
 
   constructor(private http: HttpClient) {}
 
