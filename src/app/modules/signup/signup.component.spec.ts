@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { Router, RouterModule} from '@angular/router';
+import { RouterModule} from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ToastrService } from 'ngx-toastr';
@@ -44,8 +44,6 @@ describe('SignupComponent', () => {
     fixture = TestBed.createComponent(SignupComponent);
     component = fixture.componentInstance;
     authService = TestBed.inject(AuthService);
-    router = TestBed.inject(Router);
-    toastrService = TestBed.inject(ToastrService);
     httpTestingController = TestBed.inject(HttpTestingController);
   }));
 
