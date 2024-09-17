@@ -1,6 +1,6 @@
 {
   "extends": "../tsconfig.json",
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "e2e/integration/app/common/app.steps.js", "e2e/integration/app/step_definitions/app.steps.js"],
   "compilerOptions": {
     "sourceMap": false,
     "types": ["cypress"]
