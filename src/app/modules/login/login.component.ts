@@ -1,5 +1,5 @@
 import { NgClass, NgIf, NgStyle } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -20,7 +20,7 @@ import ROUTES from '../../shared/routes';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   errorMessage: string = '';
   isLoading: boolean = false; 
@@ -57,7 +57,7 @@ export class LoginComponent {
       this.authService
         .login(this.username?.value, this.password?.value)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.isLoading = false;
             this.errorMessage = '';
             const redirectUrl = this.authService.loginRedirectUrl;

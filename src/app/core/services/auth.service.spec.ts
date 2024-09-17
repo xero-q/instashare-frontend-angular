@@ -9,7 +9,7 @@ import ROUTES from '../../shared/routes';
 describe('AuthService', () => {
   let service: AuthService;
   let httpMock: HttpTestingController;
-  let routerSpy = { navigateByUrl: jasmine.createSpy('navigateByUrl') };
+  const routerSpy = { navigateByUrl: jasmine.createSpy('navigateByUrl') };
 
   beforeEach(() => {   
     TestBed.configureTestingModule({

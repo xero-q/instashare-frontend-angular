@@ -1,5 +1,5 @@
 import { NgIf, NgStyle, NgClass } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { Router, RouterModule } from '@angular/router';
@@ -17,7 +17,7 @@ import ROUTES from '../../shared/routes';
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
   errorMessage: string = '';
   REGULAR_EXPRESSION_USERNAME= '^[a-zA-Z0-9_-]{1,50}$';

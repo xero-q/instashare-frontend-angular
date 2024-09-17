@@ -1,26 +1,21 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { ActivatedRouteSnapshot, Route, Router, RouterModule, RouterStateSnapshot } from '@angular/router';
+import { Router, RouterModule} from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ToastrService } from 'ngx-toastr';
 import { SignupComponent } from './signup.component';
 import { AuthService } from '../../core/services/auth.service';
 import { of, throwError } from 'rxjs';
-import { By } from '@angular/platform-browser';
 import { routes } from '../../app.routes';
 
 describe('SignupComponent', () => {
   let component: SignupComponent;
   let fixture: ComponentFixture<SignupComponent>;
   let authService: AuthService;
-  let router: Router;
-  let toastrService: ToastrService;
   let httpTestingController: HttpTestingController;
   let authServiceMock: any;
 
   beforeEach(waitForAsync(() => {
-    const mockAuthService = jasmine.createSpyObj('AuthService', ['signup']);
-    const mockRouter = jasmine.createSpyObj('Router', ['navigateByUrl']);
     const mockToastrService = jasmine.createSpyObj('ToastrService', ['success']);
 
     authServiceMock = {
@@ -29,13 +24,7 @@ describe('SignupComponent', () => {
       isLoggedIn: false,
       loginRedirectUrl: ''
     };
-
-    const authGuardMock = {
-      canActivate: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => true,  
-      canActivateChild: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => true, 
-      canLoad: (route: Route) => true,  
-      checkLogin: (url: string) => true  
-    };
+  
 
     TestBed.configureTestingModule({
       imports: [

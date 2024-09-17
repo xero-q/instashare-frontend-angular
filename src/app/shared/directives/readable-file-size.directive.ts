@@ -2,10 +2,10 @@ import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
 
 @Directive({
   standalone:true,
-  selector: '[readableFileSize]'
+  selector: '[appReadableFileSize]'
 })
 export class ReadableFileSizeDirective implements OnChanges {
-  @Input('readableFileSize') fileSize!: number; // Input in bytes
+  @Input('appReadableFileSize') fileSize!: number; // Input in bytes
 
   constructor(private el: ElementRef) {}
 

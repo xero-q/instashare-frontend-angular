@@ -27,6 +27,6 @@ export class UserMenuComponent {
   }
 
   logout(){
-      this.authService.logout();;
+      this.authService.logout();
   }
 }

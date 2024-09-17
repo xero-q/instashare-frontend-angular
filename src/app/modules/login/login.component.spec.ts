@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { ActivatedRouteSnapshot, Route, Router, RouterModule, RouterStateSnapshot } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { of} from 'rxjs';
 import { AuthService } from '../../core/services/auth.service';
@@ -20,10 +20,10 @@ describe('LoginComponent', () => {
     };
 
     const authGuardMock = {
-      canActivate: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => true,  
-      canActivateChild: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => true, 
-      canLoad: (route: Route) => true,  
-      checkLogin: (url: string) => true  
+      canActivate: () => true,  
+      canActivateChild: () => true, 
+      canLoad: () => true,  
+      checkLogin: () => true  
     };
     
     

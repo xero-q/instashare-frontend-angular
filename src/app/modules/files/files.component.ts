@@ -1,4 +1,4 @@
-import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
+import { Component, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
 import { FilesService } from '../../core/services/files.service';
 import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
@@ -19,7 +19,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './files.component.html',
   styleUrl: './files.component.scss'
 })
-export class FilesComponent {
+export class FilesComponent implements OnInit {
   filesList: UploadedFile[]=[];
   page:number = 1;
   perPage:number = 10;
@@ -45,7 +45,7 @@ export class FilesComponent {
         this.total = response.count;
         this.filesList = [...response.results as UploadedFile[]];
       },
-      error:(err: any)=>{
+      error:()=>{
         this.isLoading = false;  
         this.toastr.error('Error while fetching the files','Error');
       }
@@ -78,7 +78,7 @@ export class FilesComponent {
     const {id, name} = event.data;
 
     this.filesService.updateFile(id, name).subscribe({
-      next:(response: any)=>{
+      next:()=>{
         this.loadFiles();
       },
       error:(err: any)=>{

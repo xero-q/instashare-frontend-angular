@@ -1,6 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { HttpHeaders } from '@angular/common/http';
 import { FileUploadModule } from 'primeng/fileupload';
 import { environment } from '../../../../environments/environment';
 
@@ -17,7 +15,7 @@ export class FileUploadComponent {
 
   fileUploadUrl = `${environment.API_URL}/api/upload`;
      
-  onFileUpload(event: any){    
+  onFileUpload(){    
     this.message = 'Upload complete';  
     this.uploadComplete.emit();    
   }
