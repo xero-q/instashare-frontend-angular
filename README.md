@@ -1,4 +1,4 @@
-### FrontendAngularV17
+### InstaShare (Angular v17.3.0)
 
 #### Commands
 - Run app: `ng serve`
@@ -6,3 +6,6 @@
 - Run e2e tests: `ng e2e`
 - Run e2e tests with output to the console: `npm run cypress:run`
 - Run eslint: `npm run lint`
+
+#### Backend repo
+The backend for this Angular project is this: [Django backend](https://github.com/xero-q/django-backend-ce).
