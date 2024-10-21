@@ -8,7 +8,7 @@
   <app-file-upload (uploadComplete)="onUploadComplete()"></app-file-upload>
 </div>
 <p-table
-  [value]="filesList"
+  [value]="filesList()"
   dataKey="id"
   (onPage)="onPageChange($event)"
   [resizableColumns]="true"

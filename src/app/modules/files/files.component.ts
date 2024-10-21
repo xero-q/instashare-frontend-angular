@@ -1,4 +1,5 @@
-import { Component, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
+import { Component, NO_ERRORS_SCHEMA, OnInit,signal,
+  WritableSignal } from '@angular/core';
 import { FilesService } from '../../core/services/files.service';
 import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
@@ -20,7 +21,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './files.component.scss'
 })
 export class FilesComponent implements OnInit {
-  filesList: UploadedFile[]=[];
+  filesList: WritableSignal<UploadedFile[]> = signal([]);
   page:number = 1;
   perPage:number = 10;
   total:number = 0; 
@@ -35,7 +36,7 @@ export class FilesComponent implements OnInit {
   }
 
   public loadFiles(){
-    this.filesList = [];
+    this.filesList.set([]);
     this.isLoading = true;
     this.filesService
     .getFiles(this.page, this.perPage)
@@ -43,7 +44,7 @@ export class FilesComponent implements OnInit {
       next:(response: any)=>{
         this.isLoading = false;
         this.total = response.count;
-        this.filesList = [...response.results as UploadedFile[]];
+        this.filesList.set([...response.results as UploadedFile[]]);
       },
       error:()=>{
         this.isLoading = false;  
