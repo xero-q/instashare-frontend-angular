@@ -1,6 +1,7 @@
 ### InstaShare (Angular v17.3.0)
 
 #### Commands
+- Install dependencies: `npm install`
 - Run app: `ng serve`
 - Run Unit and Integration tests: `ng test --code-coverage`
 - Run e2e tests: `ng e2e`
